@@ -64,4 +64,24 @@ $(document).ready(function (e) {
         });
     }
     renderTweets(tweetDataArray);
+
+    // Event listener for form submission
+    $('form').on('submit', function (event) {
+        event.preventDefault();
+
+        var formData = $(this).serialize();
+
+        $.ajax({
+            type: 'POST',
+            url: '/tweets',
+            data: formData,
+            success: function (newTweet) {
+                console.log('Form submission successful:', newTweet);
+                renderTweets(tweetDataArray);
+            },
+            error: function (error) {
+                console.error('Error submitting form:', error);
+            }
+        });
+    });
 });
