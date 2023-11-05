@@ -9,15 +9,20 @@ $(document).ready(function () {
         // Use timeago to format the created_at timestamp
         const timeAgo = timeago.format(new Date(tweetData.created_at));
 
+        const userName = $("<div>").text(tweetData.user.name).html();
+        const userHandle = $("<div>").text(tweetData.user.handle).html();
+        const userContent = $("<div>").text(tweetData.content.text).html();
+        const avatarUrl = $("<div>").text(tweetData.user.avatars).html();
+
         const $tweet = $(`
             <article class="tweet">
                 <header>
-                    <img src="${tweetData.user.avatars}" alt="Avatar of ${tweetData.user.name}">
-                    <h3>${tweetData.user.name}</h3>
-                    <p>${tweetData.user.handle}</p>
+                    <img src="${avatarUrl}" alt="Avatar of ${userName}">
+                    <h3>${userName}</h3>
+                    <p>${userHandle}</p>
                 </header>
                 <div class="tweet-content">
-                    <p>${tweetData.content.text}</p>
+                    <p>${userContent}</p>
                 </div>
                 <footer>
                     <span>${timeAgo}</span> <!-- using timeAgo here -->
@@ -57,7 +62,6 @@ $(document).ready(function () {
         }
     ];
 
-
     const renderTweets = function (tweetDataArray) {
         var $tweetsContainer = $('.posted-tweets').empty();
         $.each(tweetDataArray, function (index, tweet) {
@@ -83,6 +87,8 @@ $(document).ready(function () {
             data: formData,
             success: function (newTweet) {
                 console.log('Form submission successful:', newTweet);
+                $('#tweet-text').val(''); // this clears the form input
+                $('.counter').text('140'); // this resets the counter
                 loadTweets();
             },
             error: function (error) {
@@ -93,17 +99,16 @@ $(document).ready(function () {
 
     // Validation function for the tweet
     function validateTweet(tweet) {
-        // Check if tweet is empty
+        //this checks if the tweet is empty
         if (tweet.trim() === "") {
             alert("Error: there is no content in this tweet!");
             return false;
         }
-        // Check if tweet exceeds the maximum length
+        // this checks if the tweet exceeds the maximum length
         else if (tweet.length > 140) {
             alert("Error: tweet is too long!");
             return false;
         }
-        // Tweet is valid
         return true;
     }
 
