@@ -56,12 +56,42 @@ main {
 /* Desktop styles */
 @media only screen and (min-width: 1024px) {
   .hero {
-    width: 33.3%;
-    float: left;
+    width: 0 0 33.3%;
+  }
+
+  .container {
+    /* Assuming .container wraps around .hero, .feature, and .content */
+    display: flex;
+    /* Establishes a flex container */
+    flex-direction: row;
+    /* Aligns children in a row instead of a column */
+    justify-content: space-between;
+    /* Distributes space around items */
+    align-items: stretch;
+    /* Stretches items to fill the container height */
+    max-width: 1024px;
+    /* Sets a maximum width for the container */
+    margin: 0 auto;
+    /* Centers the container */
   }
 
   .feature {
     line-height: 300px;
+    flex: 1;
+  }
+
+  .content {
+    flex: 1;
+    /* Allows this item to take up twice as much space as .hero and .feature */
+  }
+
+  .footer {
+    /* clear: both; */
+    /* Clears any floats; not necessary with flexbox, but kept for legacy reasons */
+    width: 100%;
+    /* Ensures the footer takes up the full width */
+    order: 3;
+    /* Puts footer at the end even if the markup doesn't have it last */
   }
 
   .menu {
@@ -76,7 +106,7 @@ main {
     font-weight: normal;
     font-size: 12px;
     color: tomato;
-    float: right;
+    /* float: right; */
   }
 
   .main {
