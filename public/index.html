@@ -32,7 +32,9 @@
 
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
+
 
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/client.js"></script>
@@ -64,7 +66,7 @@
       <h2>Compose Tweet</h2>
       <form action="/tweets" method="POST">
         <label for="tweet-text"></label>
-        <input name="text" placeholder="What are you humming about?" id="tweet-text"></input>
+        <input name="text" placeholder="What are you humming about?" id="tweet-text" />
         <hr>
         <div class="buttonss">
           <button type="submit">Tweet</button>

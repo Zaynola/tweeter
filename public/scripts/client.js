@@ -5,31 +5,32 @@
  */
 $(document).ready(function (e) {
 
-    function formatDate(timestamp) {
-        return moment(timestamp).fromNow();
-    }
-
     const createTweetElement = function (tweetData) {
+        // Use timeago to format the created_at timestamp
+        const timeAgo = timeago.format(new Date(tweetData.created_at));
+
         const $tweet = $(`
-      <article class="tweet">
-        <header>
-          <img src="${tweetData.user.avatars}" alt="Avatar of ${tweetData.user.name}">
-          <h3>${tweetData.user.name}</h3>
-          <p>${tweetData.user.handle}</p>
-        </header>
-        <div class="tweet-content">
-          <p>${tweetData.content.text}</p>
-        </div>
-        <footer>
-          <span>${formatDate(tweetData.created_at)}</span>
-          <div class="tweet-actions">
-          </div>
-        </footer>
-      </article>
-    `);
+            <article class="tweet">
+                <header>
+                    <img src="${tweetData.user.avatars}" alt="Avatar of ${tweetData.user.name}">
+                    <h3>${tweetData.user.name}</h3>
+                    <p>${tweetData.user.handle}</p>
+                </header>
+                <div class="tweet-content">
+                    <p>${tweetData.content.text}</p>
+                </div>
+                <footer>
+                    <span>${timeAgo}</span> <!-- using timeAgo here -->
+                    <div class="tweet-actions">
+                        <!-- tweet actions here -->
+                    </div>
+                </footer>
+            </article>
+        `);
 
         return $tweet;
-    }
+    };
+
 
     const tweetDataArray = [
         {
@@ -77,11 +78,26 @@ $(document).ready(function (e) {
             data: formData,
             success: function (newTweet) {
                 console.log('Form submission successful:', newTweet);
-                renderTweets(tweetDataArray);
+                loadTweets();
             },
             error: function (error) {
                 console.error('Error submitting form:', error);
             }
         });
     });
+    const loadTweets = function () {
+        $.ajax({
+            type: 'GET',
+            url: '/tweets',
+            dataType: 'json',
+            success: function (tweets) {
+                renderTweets(tweets);
+            },
+            error: function (error) {
+                console.error('Error fetching tweets:', error);
+            }
+        });
+    };
+
+    loadTweets();
 });
