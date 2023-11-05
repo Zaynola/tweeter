@@ -53,50 +53,53 @@
       <i class="fa-sharp fa-solid fa-angles-down"></i>
     </div>
   </nav>
-  <header class="main-header">
-    <div class="image">
-      <img src="/images/profile-hex.png">
-    </div>
-    <div class="name">
-      <h2>Zaynab</h2>
-    </div>
-  </header>
-
-  <!-- Page-specific (main) content here -->
   <main class="container">
-    <section class="new-tweet">
-      <div id="tweet-error" class="tweet-error-message"></div>
-      <h2>Compose Tweet</h2>
-      <form action="/tweets" method="POST">
-        <label for="tweet-text"></label>
-        <input name="text" placeholder="What are you humming about?" id="tweet-text" />
-        <hr>
-        <div class="buttonss">
-          <button type="submit">Tweet</button>
-          <output name="counter" class="counter" for="tweet-text">140</output>
-        </div>
-      </form>
-    </section>
-    <section class="posted-tweets">
-      <article class="tweet">
-        <header>
-          <img src="https://www.seekpng.com/png/detail/115-1150053_avatar-png.png" alt="User Avater">
-          <h3>Newton</h3>
-          <p>@sirIsaac</p>
-        </header>
-        <p>If i have seen further it is by standing on the shoulders of giants</p>
-        <hr>
-        <footer>
-          <span>10 days ago</span>
-          <div class="icons">
-            <i class="fa-solid fa-flag"></i>
-            <i class="fa-solid fa-code-compare"></i>
-            <i class="fa-solid fa-heart"></i>
+    <header class="main-header">
+      <div class="image">
+        <img src="/images/profile-hex.png">
+      </div>
+      <div class="name">
+        <h2>Zaynab</h2>
+      </div>
+    </header>
+
+    <!-- Page-specific (main) content here -->
+    <div>
+      <section class="new-tweet">
+        <div id="tweet-error" class="tweet-error-message"></div>
+        <h2>Compose Tweet</h2>
+        <form action="/tweets" method="POST">
+          <label for="tweet-text"></label>
+          <input name="text" placeholder="What are you humming about?" id="tweet-text" />
+          <hr>
+          <div class="buttonss">
+            <button type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
-        </footer>
-      </article>
-    </section>
+        </form>
+      </section>
+      <section class="posted-tweets">
+        <article class="tweet">
+          <header>
+            <img src="https://www.seekpng.com/png/detail/115-1150053_avatar-png.png" alt="User Avater">
+            <h3>Newton</h3>
+            <p>@sirIsaac</p>
+          </header>
+          <p>If i have seen further it is by standing on the shoulders of giants</p>
+          <hr>
+          <footer>
+            <span>10 days ago</span>
+            <div class="icons">
+              <i class="fa-solid fa-flag"></i>
+              <i class="fa-solid fa-code-compare"></i>
+              <i class="fa-solid fa-heart"></i>
+            </div>
+          </footer>
+        </article>
+      </section>
+    </div>
   </main>
+
 </body>
 
 </html>
