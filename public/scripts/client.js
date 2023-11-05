@@ -3,7 +3,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-$(document).ready(function (e) {
+$(document).ready(function () {
 
     const createTweetElement = function (tweetData) {
         // Use timeago to format the created_at timestamp
@@ -70,6 +70,11 @@ $(document).ready(function (e) {
     $('form').on('submit', function (event) {
         event.preventDefault();
 
+        const tweetText = $('#tweet-text').val();
+        if (!validateTweet(tweetText)) {
+            return;
+        }
+
         var formData = $(this).serialize();
 
         $.ajax({
@@ -85,6 +90,23 @@ $(document).ready(function (e) {
             }
         });
     });
+
+    // Validation function for the tweet
+    function validateTweet(tweet) {
+        // Check if tweet is empty
+        if (tweet.trim() === "") {
+            alert("Error: there is no content in this tweet!");
+            return false;
+        }
+        // Check if tweet exceeds the maximum length
+        else if (tweet.length > 140) {
+            alert("Error: tweet is too long!");
+            return false;
+        }
+        // Tweet is valid
+        return true;
+    }
+
     const loadTweets = function () {
         $.ajax({
             type: 'GET',
