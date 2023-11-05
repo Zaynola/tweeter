@@ -73,7 +73,7 @@ $(document).ready(function () {
     // Event listener for form submission
     $('form').on('submit', function (event) {
         event.preventDefault();
-
+        hideError();
         const tweetText = $('#tweet-text').val();
         if (!validateTweet(tweetText)) {
             return;
@@ -97,18 +97,27 @@ $(document).ready(function () {
         });
     });
 
+    function showError(message) {
+        $('#tweet-error').text(message).slideDown('fast');
+    }
+
+    function hideError() {
+        $('#tweet-error').slideUp('fast');
+    }
+
     // Validation function for the tweet
     function validateTweet(tweet) {
         //this checks if the tweet is empty
         if (tweet.trim() === "") {
-            alert("Error: there is no content in this tweet!");
+            showError("Error: there is no content in this tweet!");
             return false;
         }
         // this checks if the tweet exceeds the maximum length
         else if (tweet.length > 140) {
-            alert("Error: tweet is too long!");
+            showError("Error: tweet is too long!");
             return false;
         }
+        hideError();
         return true;
     }
 

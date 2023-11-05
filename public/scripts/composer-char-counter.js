@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Register an event handler for the input element inside the form in .new-tweet
+    // Register an event handler for the input element inside the form in .new - tweet
     $('.new-tweet form input').on('keyup', function () {
         var inputValue = $(this).val();
         var inputValueLength = inputValue.length;
