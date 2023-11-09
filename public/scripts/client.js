@@ -23,6 +23,9 @@ $(document).ready(function () {
                     <span>${timeAgo}</span> <!-- using timeAgo here -->
                     <div class="tweet-actions">
                         <!-- tweet actions here -->
+                        <i class="fa-solid fa-flag"></i>
+                        <i class="fa-solid fa-code-compare"></i>
+                        <i class="fa-solid fa-heart"></i>
                     </div>
                 </footer>
             </article>
